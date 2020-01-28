@@ -1,0 +1,20 @@
+{
+  "name": "jquery-to-javascript",
+  "version": "0.0.1",
+  "description": "This repo is the [jquery-to-javascript-convert](https://github.com/tayfunerbilen/jquery-to-javascript-convert) repository adapted to javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aykutkardas/jquery-to-javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aykutkardas/jquery-to-javascript/issues"
+  },
+  "homepage": "https://github.com/aykutkardas/jquery-to-javascript#readme"
+}
