@@ -8,3 +8,10 @@ describe("idSelectors", () => {
     expect(result).to.equal("document.getElementById(\"selector\")");
   });
 });
+
+describe("classSelectors", () => {
+  it("should return .getElementByClassName", () => {
+    const result = Converter.classSelectors("$('.selector')");
+    expect(result).to.equal("document.getElementByClassName(\"selector\")");
+  });
+});

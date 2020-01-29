@@ -18,13 +18,29 @@ export default class Converter {
     });
   }
 
+  static classSelectors(input: string) {
+    const pattern = /\$\(\s?('|\")\s?\.([0-9a-zA-Z-_\s]+)\s?('|\")\s?\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[2];
+      if (key && key.length > 0) {
+        if (key.includes(" ")) {
+          return `document.querySelectorAll(".${key}")`;
+        } else {
+          return `document.getElementByClassName("${key}")`;
+        }
+      }
+    });
+  }
+
   static convert(input) {
     const {
-      idSelectors
+      idSelectors,
+      classSelectors
     } = Converter;
 
     let output = input;
-    const processList = [idSelectors];
+    const processList = [idSelectors, classSelectors];
 
     processList.forEach(process => {
       output = process(output);
