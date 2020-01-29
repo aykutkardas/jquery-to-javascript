@@ -2,19 +2,43 @@
   "name": "jquery-to-javascript",
   "version": "0.0.1",
   "description": "This repo is the [jquery-to-javascript-convert](https://github.com/tayfunerbilen/jquery-to-javascript-convert) repository adapted to javascript.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register -r ignore-styles -r jsdom-global/register test/**/*.spec.ts",
+    "test-windows": "cross-env TS_NODE_COMPILER_OPTIONS='{\\\"module\\\":\\\"commonjs\\\"}' mocha -r ts-node/register -r ignore-styles -r jsdom-global/register test/**/*.spec.ts",
+    "build": "tsc"
+  },
+  "author": "Aykut Kardaş",
+  "license": "ISC",
+  "dependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^13.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.6"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aykutkardas/jquery-to-javascript.git"
+    "url": "git+https://github.com/aykutkardas/typescript-starter-kit.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "starter",
+    "kit",
+    "unit",
+    "test"
+  ],
   "bugs": {
-    "url": "https://github.com/aykutkardas/jquery-to-javascript/issues"
+    "url": "https://github.com/aykutkardas/typescript-starter-kit/issues"
   },
-  "homepage": "https://github.com/aykutkardas/jquery-to-javascript#readme"
+  "homepage": "https://github.com/aykutkardas/typescript-starter-kit#readme"
 }
