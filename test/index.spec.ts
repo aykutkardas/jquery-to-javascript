@@ -59,3 +59,10 @@ describe(".addClass()", () => {
     expect(result).to.equal(".classList.add(\"test\")");
   });
 });
+
+describe(".removeClass()", () => {
+  it("should return .classList.remove", () => {
+    const result = Converter.removeClass(".removeClass(\"test\")");
+    expect(result).to.equal(".classList.remove(\"test\")");
+  });
+});

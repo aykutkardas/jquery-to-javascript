@@ -90,6 +90,17 @@ export default class Converter {
     });
   }
 
+  // .removeClass(x) -> .classList.add(x)
+  static removeClass(input: string): string {
+    const pattern = /.removeClass\(('|\")([0-9a-zA-Z-_]+)('|\")\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[2];
+  
+      return `.classList.remove("${key}")`;
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -98,6 +109,7 @@ export default class Converter {
       "text",
       "toggleClass",
       "addClass",
+      "removeClass",
     ];
 
     let output = input;
