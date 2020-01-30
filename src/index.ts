@@ -171,7 +171,7 @@ export default class Converter {
   }
 
   static each(input: string): string {
-    const pattern = /\$\.each\(\s?(\w+)\s?\,\s?function\((.*?)\){(.*?)}\s?\)/gms;
+    const pattern = /\$\.each\(\s?(\w+)\s?\,\s?function\((.*?)\){(.*?)}\s?\)/s;
     return input.replace(pattern, function (match) {
       const regexResult = pattern.exec(match);
 
