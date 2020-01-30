@@ -1,6 +1,5 @@
 export default class Converter {
 
-
   // $("#selector") -> document.getElementById("selector");
   // $("#selector sub-selector") -> document.querySelectorAll("#selector sub-selector");
   static idSelectors(input: string) {
@@ -17,7 +16,9 @@ export default class Converter {
       }
     });
   }
-
+ 
+  // $(".selector") -> document.getElementByClassName("selector");
+  // $(".selector sub-selector") -> document.querySelectorAll(".selector sub-selector");
   static classSelectors(input: string) {
     const pattern = /\$\(\s?('|\")\s?\.([0-9a-zA-Z-_\s]+)\s?('|\")\s?\)/gm;
     return input.replace(pattern, function (match) {
