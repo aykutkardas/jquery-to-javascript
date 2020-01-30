@@ -120,6 +120,14 @@ export default class Converter {
     });
   }
 
+  // .hide() -> .style.display = 'none'
+  static show(input: string): string {
+    const pattern = /\.show\(([0-9]+|)\)/gm;
+    return input.replace(pattern, function (match) {
+      return `.style.display = ""`;
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -131,6 +139,7 @@ export default class Converter {
       "removeClass",
       "hasClass",
       "hide",
+      "show",
     ];
 
     let output = input;

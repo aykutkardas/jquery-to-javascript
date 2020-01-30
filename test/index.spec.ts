@@ -80,3 +80,10 @@ describe(".hide()", () => {
     expect(result).to.equal(".style.display = \"none\"");
   });
 });
+
+describe(".show()", () => {
+  it("should return .style.display", () => {
+    const result = Converter.show(".show()");
+    expect(result).to.equal(".style.display = \"\"");
+  });
+});
