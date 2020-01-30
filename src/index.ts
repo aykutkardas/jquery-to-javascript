@@ -79,12 +79,25 @@ export default class Converter {
     });
   }
 
+  // .addClass(x) -> .classList.add(x)
+  static addClass(input: string): string {
+    const pattern = /.addClass\(('|\")([0-9a-zA-Z-_]+)('|\")\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[2];
+  
+      return `.classList.add("${key}")`;
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
       "classSelectors",
       "html",
       "text",
+      "toggleClass",
+      "addClass",
     ];
 
     let output = input;

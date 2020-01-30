@@ -52,3 +52,10 @@ describe(".toggleClass()", () => {
     expect(result).to.equal(".classList.toggle(\"test\")");
   });
 });
+
+describe(".addClass()", () => {
+  it("should return .classList.add", () => {
+    const result = Converter.addClass(".addClass(\"test\")");
+    expect(result).to.equal(".classList.add(\"test\")");
+  });
+});
