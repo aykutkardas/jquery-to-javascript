@@ -87,3 +87,14 @@ describe(".show()", () => {
     expect(result).to.equal(".style.display = \"\"");
   });
 });
+
+describe(".value()", () => {
+  it("should return .value", () => {
+    const result = Converter.val(".val()");
+    expect(result).to.equal(".value");
+  });
+  it("should return .value = key", () => {
+    const result = Converter.val(".val('text')");
+    expect(result).to.equal(".value = 'text'");
+  });
+});

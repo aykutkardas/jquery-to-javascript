@@ -128,6 +128,22 @@ export default class Converter {
     });
   }
 
+   // .value() -> .value
+  // .value(x) -> .value = x
+  static val(input: string): string {
+    const pattern = /\.val\(([0-9a-zA-Z-_'\"]+|)\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[1];
+
+      if (key && key.length > 0) {
+        return `.value = ${key}`;
+      } else {
+        return `.value`;
+      }
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -140,6 +156,7 @@ export default class Converter {
       "hasClass",
       "hide",
       "show",
+      "val",
     ];
 
     let output = input;
