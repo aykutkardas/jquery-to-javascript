@@ -33,6 +33,23 @@ export default class Converter {
     });
   }
 
+  // .html() -> .innerHTML
+  // .html(x) -> .innerHTML = x
+  static html(input: string): string {
+    const pattern = /.html\((.*?)\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[1];
+      const otherKey = regexResult[0];
+
+      if (key && key.length > 0) {
+          return `.innerHTML = ${key}`;
+      } else if (otherKey && otherKey.length > 0) {
+        return `.innerHTML`;
+      }
+    });
+  }
+
   static convert(input) {
     const {
       idSelectors,
