@@ -128,7 +128,7 @@ export default class Converter {
     });
   }
 
-   // .value() -> .value
+  // .value() -> .value
   // .value(x) -> .value = x
   static val(input: string): string {
     const pattern = /\.val\(([0-9a-zA-Z-_'\"]+|)\)/gm;
@@ -144,6 +144,24 @@ export default class Converter {
     });
   }
 
+  // .next() -> .nextElementSibling
+  static next(input: string): string {
+    const pattern = /\.next\(\)/gm;
+    return input.replace(pattern, function (match) {
+      return `.nextElementSibling`;
+    });
+    // @TODO Çoklu seçim eklenecek.
+  }
+
+  // .prev() -> .previousElementSibling
+  static prev(input: string): string {
+    const pattern = /\.prev\(\)/gm;
+    return input.replace(pattern, function (match) {
+      return `.previousElementSibling`;
+    });
+    // @TODO Çoklu seçim eklenecek.
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -157,6 +175,8 @@ export default class Converter {
       "hide",
       "show",
       "val",
+      "next",
+      "prev",
     ];
 
     let output = input;

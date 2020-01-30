@@ -98,3 +98,18 @@ describe(".value()", () => {
     expect(result).to.equal(".value = 'text'");
   });
 });
+
+
+describe(".next()", () => {
+  it("should return .nextElementSibling", () => {
+    const result = Converter.next(".next()");
+    expect(result).to.equal(".nextElementSibling");
+  });
+});
+
+describe(".prev()", () => {
+  it("should return .previousElementSibling", () => {
+    const result = Converter.prev(".prev()");
+    expect(result).to.equal(".previousElementSibling");
+  });
+});
