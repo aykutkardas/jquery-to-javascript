@@ -70,9 +70,10 @@ export default class Converter {
 
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
-      "idSelector",
-      "classSelector",
+      "idSelectors",
+      "classSelectors",
       "html",
+      "text",
     ];
 
     let output = input;
