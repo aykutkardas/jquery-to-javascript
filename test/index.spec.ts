@@ -34,3 +34,14 @@ describe(".html()", () => {
     expect(result).to.equal(".innerHTML = 'text'");
   });
 });
+
+describe(".text()", () => {
+  it("should return .innerText", () => {
+    const result = Converter.text(".text()");
+    expect(result).to.equal(".innerText");
+  });
+  it("should return .innerText = key", () => {
+    const result = Converter.text(".text('text')");
+    expect(result).to.equal(".innerText = 'text'");
+  });
+});

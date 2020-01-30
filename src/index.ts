@@ -51,6 +51,23 @@ export default class Converter {
     });
   }
 
+  // .text() -> .innerText
+  // .text(x) -> .innerText = x
+  static text(input: string) {
+    const pattern = /.text\((.*?)\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[1];
+      const otherKey = regexResult[0];
+
+      if (key && key.length > 0) {
+          return `.innerText = ${key}`;
+      } else if (otherKey && otherKey.length > 0) {
+        return `.innerText`;
+      }
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelector",
