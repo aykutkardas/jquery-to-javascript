@@ -112,6 +112,14 @@ export default class Converter {
     });
   }
 
+  // .hide() -> .style.display = 'none'
+  static hide(input: string): string {
+    const pattern = /\.hide\(([0-9]+|)\)/gm;
+    return input.replace(pattern, function (match) {
+      return `.style.display = "none"`;
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -121,6 +129,8 @@ export default class Converter {
       "toggleClass",
       "addClass",
       "removeClass",
+      "hasClass",
+      "hide",
     ];
 
     let output = input;

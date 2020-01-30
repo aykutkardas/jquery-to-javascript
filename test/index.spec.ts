@@ -73,3 +73,10 @@ describe(".hasClass()", () => {
     expect(result).to.equal(".classList.contains(\"test\")");
   });
 });
+
+describe(".hide()", () => {
+  it("should return .style.display", () => {
+    const result = Converter.hide(".hide()");
+    expect(result).to.equal(".style.display = \"none\"");
+  });
+});
