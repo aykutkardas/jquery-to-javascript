@@ -16,7 +16,7 @@ export default class Converter {
       }
     });
   }
- 
+
   // $(".selector") -> document.getElementByClassName("selector");
   // $(".selector sub-selector") -> document.querySelectorAll(".selector sub-selector");
   static classSelectors(input: string) {
@@ -44,26 +44,39 @@ export default class Converter {
       const otherKey = regexResult[0];
 
       if (key && key.length > 0) {
-          return `.innerHTML = ${key}`;
+        return `.innerHTML = ${key}`;
       } else if (otherKey && otherKey.length > 0) {
         return `.innerHTML`;
       }
     });
   }
 
-  static convert(input) {
-    const {
-      idSelectors,
-      classSelectors
-    } = Converter;
+  static convert(input: string, config?: IConvertConfig) {
+    const processList = [
+      "idSelector",
+      "classSelector",
+      "html",
+    ];
 
     let output = input;
-    const processList = [idSelectors, classSelectors];
+
+    let excludeList = [];
+
+    if (config && config.exclude && Array.isArray(config.exclude)) {
+      excludeList = config.exclude;
+    }
+
 
     processList.forEach(process => {
-      output = process(output);
+      if (!excludeList.includes(process)) {
+        output = Converter[process](output);
+      }
     });
 
     return output;
   }
+}
+
+interface IConvertConfig {
+  exclude: string[];
 }
