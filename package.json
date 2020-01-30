@@ -1,7 +1,7 @@
 {
   "name": "jquery-to-javascript",
   "version": "0.0.1",
-  "description": "This repo is the [jquery-to-javascript-convert](https://github.com/tayfunerbilen/jquery-to-javascript-convert) repository adapted to javascript.",
+  "description": "Converts simple jQuery codes to javascript codes.",
   "main": "dist/index.js",
   "scripts": {
     "test": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register -r ignore-styles -r jsdom-global/register test/**/*.spec.ts",
@@ -11,9 +11,6 @@
   "author": "Aykut Kardaş",
   "license": "ISC",
   "dependencies": {},
-  "directories": {
-    "test": "test"
-  },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
