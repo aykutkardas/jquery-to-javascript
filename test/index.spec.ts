@@ -120,3 +120,21 @@ describe(".clone()", () => {
     expect(result).to.equal(".cloneNode(true)");
   });
 });
+
+
+describe("$.each()", () => {
+  it("should return .forEach()", () => {
+    const result = Converter.each(`
+      $.each(list, function(key, val){
+        console.log($(val).html());
+      });
+    `);
+    expect(result).to.equal(`
+      list.forEach(function(val, key) {
+        console.log($(val).html());
+      });
+    `);
+  });
+});
+
+

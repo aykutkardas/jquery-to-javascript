@@ -168,7 +168,21 @@ export default class Converter {
     return input.replace(pattern, function (match) {
       return `.cloneNode(true)`;
     });
-    // @TODO Çoklu seçim eklenecek.
+  }
+
+  static each(input: string): string {
+    const pattern = /\$\.each\(\s?(\w+)\s?\,\s?function\((.*?)\){(.*?)}\s?\)/gms;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+
+      const arrKey = regexResult[1];
+      const rawParams = regexResult[2];
+      const context = regexResult[3];
+
+      const params = rawParams.replace(' ', '').split(',').reverse().join(', ');
+
+      return `${arrKey}.forEach(function(${params}) {${context}})`
+    });
   }
 
   static convert(input: string, config?: IConvertConfig) {
@@ -187,6 +201,7 @@ export default class Converter {
       "next",
       "prev",
       "clone",
+      "each",
     ];
 
     let output = input;
