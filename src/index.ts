@@ -90,7 +90,7 @@ export default class Converter {
     });
   }
 
-  // .removeClass(x) -> .classList.add(x)
+  // .removeClass(x) -> .classList.remove(x)
   static removeClass(input: string): string {
     const pattern = /.removeClass\(('|\")([0-9a-zA-Z-_]+)('|\")\)/gm;
     return input.replace(pattern, function (match) {
@@ -98,6 +98,17 @@ export default class Converter {
       const key = regexResult[2];
   
       return `.classList.remove("${key}")`;
+    });
+  }
+
+  // .hasClass(x) -> .classList.contains(x)
+  static hasClass(input: string): string {
+    const pattern = /.hasClass\(('|\")([0-9a-zA-Z-_]+)('|\")\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[2];
+  
+      return `.classList.contains("${key}")`;
     });
   }
 

@@ -66,3 +66,10 @@ describe(".removeClass()", () => {
     expect(result).to.equal(".classList.remove(\"test\")");
   });
 });
+
+describe(".hasClass()", () => {
+  it("should return .classList.contains", () => {
+    const result = Converter.hasClass(".hasClass(\"test\")");
+    expect(result).to.equal(".classList.contains(\"test\")");
+  });
+});
