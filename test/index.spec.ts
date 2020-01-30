@@ -45,3 +45,10 @@ describe(".text()", () => {
     expect(result).to.equal(".innerText = 'text'");
   });
 });
+
+describe(".toggleClass()", () => {
+  it("should return .classList.toggle", () => {
+    const result = Converter.toggleClass(".toggleClass(\"test\")");
+    expect(result).to.equal(".classList.toggle(\"test\")");
+  });
+});

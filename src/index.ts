@@ -68,6 +68,17 @@ export default class Converter {
     });
   }
 
+  // .toggleClass(x) -> .classList.toggle(x)
+  static toggleClass(input: string): string {
+    const pattern = /.toggleClass\(('|\")([0-9a-zA-Z-_]+)('|\")\)/gm;
+    return input.replace(pattern, function (match) {
+      const regexResult = pattern.exec(match);
+      const key = regexResult[2];
+  
+      return `.classList.toggle("${key}")`;
+    });
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
