@@ -162,6 +162,15 @@ export default class Converter {
     // @TODO Çoklu seçim eklenecek.
   }
 
+  // .clone() -> .cloneNode(true)
+  static clone(input: string): string {
+    const pattern = /\.clone\(\)/gm;
+    return input.replace(pattern, function (match) {
+      return `.cloneNode(true)`;
+    });
+    // @TODO Çoklu seçim eklenecek.
+  }
+
   static convert(input: string, config?: IConvertConfig) {
     const processList = [
       "idSelectors",
@@ -177,6 +186,7 @@ export default class Converter {
       "val",
       "next",
       "prev",
+      "clone",
     ];
 
     let output = input;

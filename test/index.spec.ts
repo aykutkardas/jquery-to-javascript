@@ -113,3 +113,10 @@ describe(".prev()", () => {
     expect(result).to.equal(".previousElementSibling");
   });
 });
+
+describe(".clone()", () => {
+  it("should return .cloneNode", () => {
+    const result = Converter.clone(".clone()");
+    expect(result).to.equal(".cloneNode(true)");
+  });
+});
