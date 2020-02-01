@@ -123,7 +123,7 @@ describe(".clone()", () => {
 
 
 describe("$.each()", () => {
-  it("should return .forEach()", () => {
+  it("should return .forEach", () => {
     const result = Converter.each(`
       $.each(list, function(key, val){
         console.log($(val).html());
